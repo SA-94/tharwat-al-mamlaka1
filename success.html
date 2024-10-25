@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>نجاح</title>
+   <style>
+      body {
+         margin: 0;
+         padding: 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 100vh;
+         background-color: #f0f0f0; /* لون خلفية الصفحة الجديدة */
+         font-family: Arial, sans-serif;
+         overflow: hidden; /* لمنع ظهور شريط التمرير */
+      }
+      
+      .content {
+         text-align: center;
+         padding: 20px;
+         border: 2px solid #4CAF50;
+         border-radius: 10px;
+         background-color: white;
+         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+         position: relative; /* لجعل العنصر يحتوي القصاصات */
+         z-index: 1;
+      }
+
+      h1 {
+         color: #4CAF50; /* لون العنوان */
+      }
+
+      p {
+         color: #333; /* لون النص */
+      }
+
+      button {
+         margin-top: 20px;
+         padding: 10px 20px;
+         font-size: 1rem;
+         border: none;
+         border-radius: 5px;
+         background-color: #4CAF50;
+         color: white;
+         cursor: pointer;
+      }
+
+      button:hover {
+         background-color: #45a049; /* تأثير عند مرور الماوس */
+      }
+
+      .confetti {
+         position: absolute;
+         width: 10px;
+         height: 10px;
+         opacity: 0.8;
+         pointer-events: none; /* لمنع تداخل الفأرة مع القصاصات */
+      }
+   </style>
+</head>
+<body>
+   <div class="content">
+      <h1>مبروك!</h1>
+      <p>لقد أجبت بشكل صحيح، المملكة تأسست في عام 1932.</p>
+   </div>
+
+   <script>
+      function goBack() {
+         window.history.back(); // العودة إلى الصفحة السابقة
+      }
+
+      function createConfetti() {
+         const colors = ['#ff0b00', '#ff7f00', '#fffb00', '#00ff0b', '#00fbff', '#002bff', '#a500ff'];
+         const confetti = document.createElement('div');
+         confetti.classList.add('confetti');
+         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+         confetti.style.left = Math.random() * window.innerWidth + 'px';
+         confetti.style.top = Math.random() * 10 + '%'; // رفع القصاصات إلى 50% من ارتفاع الصفحة
+         confetti.style.animation = 'fall 2s linear forwards';
+
+         document.body.appendChild(confetti);
+
+         // Remove confetti after animation
+         setTimeout(() => {
+            confetti.remove();
+         }, 2000);
+      }
+
+      // إنشاء القصاصات الملونة بشكل عشوائي أكثر
+      setInterval(createConfetti, 100); // زيادة عدد القصاصات
+
+      // CSS Animation
+      const style = document.createElement('style');
+      style.innerHTML = `
+         @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+         }
+      `;
+      document.head.appendChild(style);
+   </script>
+</body>
+</html>
