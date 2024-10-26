@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>خلفية علم المملكة مع سؤال</title>
+   <style>
+      /* إعداد خلفية العلم */
+      body {
+         margin: 0;
+         padding: 0;
+         background: url('https://media2.giphy.com/media/SMYqFSXUXI8vmzpIU4/giphy.gif') center center / cover no-repeat fixed;
+         height: 100vh;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         overflow: hidden;
+         font-family: Arial, sans-serif;
+      }
+
+      /* طبقة شفافة فوق الخلفية */
+      .overlay {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.5);
+         z-index: 1;
+      }
+
+      /* تنسيق المربع مع السؤال */
+      .center-box {
+         width: 300px;
+         padding: 20px;
+         background-color: rgba(0, 0, 0, 0.6);
+         border-radius: 10px;
+         text-align: center;
+         color: white;
+         position: relative;
+         z-index: 2;
+      }
+
+      input[type="number"], button {
+         margin-top: 10px;
+         padding: 10px;
+         font-size: 1rem;
+         border-radius: 5px;
+         border: none;
+      }
+
+      #error-message {
+         color: #ff4747;
+         font-size: 1rem;
+         margin-top: 10px;
+         display: none;
+      }
+   </style>
+</head>
+<body>
+   <div class="overlay"></div> <!-- طبقة شفافة فوق الخلفية -->
+   <div class="center-box">
+      <p>متى تأسست المملكة؟</p>
+      <input type="number" id="year-input" placeholder="أدخل السنة هنا" />
+      <button onclick="checkYear()">تحقق</button>
+      <p id="error-message">يرجى تعبئة الحقل.</p>
+   </div>
+
+   <script>
+      let errorCount = 0;
+
+      function checkYear() {
+         const inputYear = document.getElementById("year-input").value;
+         const errorMessage = document.getElementById("error-message");
+
+         if (inputYear === "") {
+            errorMessage.textContent = "...يرجى تعبئة الحقل.";
+            errorMessage.style.display = "block";
+         } else if (inputYear === "1932") {
+            window.location.href = "success.html";
+         } else {
+            errorCount++;
+            errorMessage.textContent = "إجابة خاطئة، حاول مرة أخرى.";
+            errorMessage.style.color = "#ff6347";
+            errorMessage.style.display = "block";
+
+            // تحويل المستخدم إلى صفحة "هل أنت متأكد أنك سعودي؟" بعد 3 محاولات خاطئة
+            if (errorCount >= 1) {
+               setTimeout(() => {
+                  window.location.href = "are_you_saudi.html";
+               }, 1000);
+            }
+         }
+      }
+   </script>
+</body>
+</html>

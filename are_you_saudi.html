@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>هل أنت متأكد أنك سعودي؟</title>
+   <style>
+      body {
+         margin: 0;
+         padding: 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 100vh;
+         background: linear-gradient(45deg, #1e1e1e, #333);
+         font-family: Arial, sans-serif;
+         overflow: hidden;
+         color: white;
+         background-size: 400% 400%; /* تسهيل حركة التدرج */
+         animation: bgGradient 5s infinite linear; /* تدرج متحرك */
+      }
+
+      /* تدرج الخلفية المتحرك */
+      @keyframes bgGradient {
+         0% { background-position: 0% 50%; }
+         100% { background-position: 100% 50%; }
+      }
+
+      /* تأثير التوهج للنص */
+      .content {
+         text-align: center;
+         padding: 20px;
+         background-color: rgba(0, 0, 0, 0.8);
+         border-radius: 10px;
+         position: relative;
+         z-index: 2;
+         animation: contentFadeIn 2s ease-in-out;
+      }
+
+      @keyframes contentFadeIn {
+         0% { opacity: 0; transform: scale(0.9); }
+         100% { opacity: 1; transform: scale(1); }
+      }
+
+      .content h1 {
+         font-size: 2rem;
+         margin: 0;
+         animation: blink 1.5s infinite alternate, textWave 3s linear infinite;
+         text-shadow: 0 0 10px #ff7f00, 0 0 20px #fffb00; /* توهج ملون للنص */
+      }
+
+      @keyframes blink {
+         0%, 100% { opacity: 1; }
+         50% { opacity: 0.5; }
+      }
+
+      @keyframes textWave {
+         0%, 100% { transform: rotate(0deg); }
+         50% { transform: rotate(2deg); }
+      }
+
+      /* رمز العلم السعودي بتأثير دوران بسيط */
+      .emoji {
+         font-size: 3rem;
+         margin-top: 15px;
+         animation: spin 5s linear infinite;
+      }
+
+      @keyframes spin {
+         0% { transform: rotate(0deg); }
+         100% { transform: rotate(360deg); }
+      }
+
+      /* تأثير الشرائط الملونة المتحركة */
+      .light-stripes {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+         background-size: 50px 50px;
+         animation: stripeMove 5s linear infinite;
+         z-index: 1;
+      }
+
+      @keyframes stripeMove {
+         0% { background-position: 0 0; }
+         100% { background-position: 50px 50px; }
+      }
+
+      /* فقاعات أكثر سلاسة */
+      .bubble {
+         position: absolute;
+         bottom: -10px;
+         width: 15px;
+         height: 15px;
+         background: rgba(255, 255, 255, 0.1);
+         border-radius: 50%;
+         animation: bubbleMove 5s infinite linear;
+      }
+
+      @keyframes bubbleMove {
+         0% { transform: translateY(0); opacity: 1; }
+         100% { transform: translateY(-100vh); opacity: 0; }
+      }
+
+      /* زر العودة بتأثير الوهج */
+      .back-button {
+         margin-top: 20px;
+         padding: 10px 20px;
+         font-size: 1rem;
+         border-radius: 5px;
+         background-color: #ff6347;
+         border: none;
+         color: white;
+         cursor: pointer;
+         animation: buttonGlow 1.5s infinite alternate;
+      }
+
+      @keyframes buttonGlow {
+         0% { box-shadow: 0 0 10px #ff6347; }
+         100% { box-shadow: 0 0 20px #ff6347, 0 0 30px #ffa07a; }
+      }
+   </style>
+</head>
+<body>
+   <div class="light-stripes"></div>
+   <div class="content">
+      <h1>هل أنت متأكد أنك سعودي؟ 🤔</h1>
+      <div class="emoji">🇸🇦</div>
+      <button class="back-button" onclick="window.location.href='1.html';">العودة</button>
+   </div>
+
+   <!-- فقاعات متحركة كزينة في الخلفية -->
+   <script>
+      for (let i = 0; i < 30; i++) {
+         let bubble = document.createElement('div');
+         bubble.classList.add('bubble');
+         bubble.style.left = `${Math.random() * 100}%`;
+         bubble.style.width = `${Math.random() * 15 + 10}px`;
+         bubble.style.height = bubble.style.width;
+         document.body.appendChild(bubble);
+      }
+   </script>
+</body>
+</html>
